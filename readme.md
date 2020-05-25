@@ -20,7 +20,7 @@ Can be used with the Arduino IDE. This library is based on Wire.
 
 
 ## Supported EEPROMs
-Support for other EEPROMs can be added.
+Support for other EEPROMs can be added. See instructions in I2C_EEPROM.h.
 
 ### Atmel
 
