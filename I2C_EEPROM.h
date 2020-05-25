@@ -9,22 +9,21 @@
  * 
  *
  *  *****************************
- * Anlegen eigener EEProms: 
- * eephandler<uint8_t I2CADDRESS,uint16_t EEPLENGHT,uint8_t ADDRESSMODE,uint8_t PAGELENGTH> 
- * I2CADDRESS -- Die i2c basisaddresse des eeproms
- * Manche EEProms belegen mehrere Addressen, das wird abgehandelt.
- * Manche haben Addresspins A0 bis A2 um die Basisadresse festzulegen 
- * Ein I2C Scanner gibt gerne Auskunft.   
+ * Create your own EEPROM:
+ * eephandler<uint8_t I2CADDRESS, uint16_t EEPLENGTH, uint8_t ADDRESSMODE, uint8_t PAGELENGTH> 
+ * I2CADDRESS -- The I2C base address of the EEPROM
+ * Some EEPROMs occupy multiple addresses. This is dealth with.
+ * Some use pins to change the base address.
+ * An I2C would provide this information.
  *  
- * EEPLENGHT -- größe des EEProm in Byte
+ * EEPLENGTH -- The EEPROM size in bytes.
  *  
- * ADDRESSMODE -- größere EEProms haben eine 2 Byte Adresse
- * kleinere eine 1 Byte Adresse, teilweise werden Adressbits in die DeviceAdresse übernommen.   
+ * ADDRESSMODE -- Number of address bytes. Larger EEPROMs will use 2-byte addresses.
  *  
- * PAGELENGTH -- größt mögliche Schreib/Lesemenge
- * Je nach Baustein, aber maximal 32, wegen der beschränkten Buffergröße von Wire 
+ * PAGELENGTH -- Largest possible read/write size in bytes.
+ * Depends on the EEPROM. Maximum of 32 bytes due to the Wire library's buffer size.
  * 
- * Bitte Datenblatt des jeweiligen Herstellers konsultieren.
+ * Consult the datasheet of the EEPROM for information.
  *    
  *    
 */
