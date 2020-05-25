@@ -95,8 +95,8 @@ void setup () {
     // The memory size of the EEPROM is saved in the class
     // can therefore be read out without the EEPROM really
     // ready
-    Serial.print ("EE Prom lenth:");
-    Serial.println (eep.length ());
+    Serial.print("EEPROM lenth:");
+    Serial.println(eep.length());
     
     
     if (eep.ready()) { // EEPROM ready?
@@ -126,10 +126,10 @@ Returns the size of the EEPROM. This value is stored in the class, so no connect
 ### uint8_t read(unit16_t address)
 Reads 1 byte from the specified address.
 
-### void write(unit16_t address,uint8_t value)
+### void write(unit16_t address, uint8_t value)
 Writes 1 byte to the specified address.
 
-### void update(unit16_t address,uint8_t value)
+### void update(unit16_t address, uint8_t value)
 Reads from the specified address, and writes to it if that value differs from the specified value.
 
 ### void put(unit16_t address,  customvar)
