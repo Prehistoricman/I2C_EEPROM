@@ -1,356 +1,151 @@
-<html>
- <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>I2C EEProm </title>
- </head>
- <body>
-<h1>Eine recht universelle I2C EEProm Library</h1>
-<p>Version 0.3 vom 06.01.2016 12:52:30</p>
-<p>Einsetzbar mit der Arduino IDE. Die Lib basiert auf Wire.</p>
-<br>
+# CombiesGit's I2C EEPROM Library
+
+Version 0.3 from 06/01/2016 12:52:30
+
+Can be used with the Arduino IDE. This library is based on Wire.
 
 
-<h2>Download</h2>
-<a href="http://combie.de/Arduino/I2C_EEPROM/I2C_EEPROM.zip">I2C EEProm Library für Arduino</a>, evtl. in einer neueren Fassung
-<br>
-<a href="http://combie.de/Arduino/I2C_EEPROM/readme.html">Dieses Dokument</a>, evtl. in einer neueren Fassung
-<br>
+## Download
 
-
-<h2>Features</h2>
-<ol type="1">
- <li>Größtenteils aufrufkompatibel mit der Arduino EEPROM Lib</li>
- <li>Unterstützung vieler I2C EEProms</li>
- <li>Relativ einfache Erstellung von User definierten EEProms</li>
- <li>Geringer RAM Verbrauch</li>
-</ol>
-<br>
-
-<h2>Unterstützte EEProms</h2>
-Hinzufügen weiterer EEProms ist jederzeit möglich.
-<table width="760" align="center" border="1" cellspacing="0" cellpadding="7" style="border-collapse: collapse">
- <tr>
-  <td valign="top" colspan="4">
-  Atmel
-  </td>
- </tr>
- 
-  <tr>
-    <td>Classname</td>
-    <td>Size</td>
-    <td>Page Size</td>
-    <td>Adressmode</td>
- </tr>
-  <tr>
-    <td>AT24C01</td>
-    <td>128</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
- 
-  <tr>
-    <td>AT24C02</td>
-    <td>256</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>AT24C04</td>
-    <td>512</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-   <tr>
-    <td>AT24C08</td>
-    <td>1024</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-   <tr>
-    <td>AT24C16</td>
-    <td>2048</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>AT24C32</td>
-    <td>4096</td>
-    <td>32</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>AT24C64</td>
-    <td>8192</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>AT24C128</td>
-    <td>16384</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
- 
-  <tr>
-    <td>AT24C256</td>
-    <td>32768</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>AT24C512</td>
-    <td>65536</td>
-    <td>128</td>
-    <td>2</td>
- </tr>
-</table>
-<br>
-<table width="760" align="center" border="1" cellspacing="0" cellpadding="7" style="border-collapse: collapse">
- <tr>
-  <td valign="top" colspan="4">
-  STMicroelectronics
-  </td>
- </tr>
- 
-  <tr>
-    <td>Classname</td>
-    <td>Size</td>
-    <td>Page Size</td>
-    <td>Adressmode</td>
- </tr>
- 
-  <tr>
-    <td>M24C01</td>
-    <td>128</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>ST24C01</td>
-    <td>128</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>M24C02</td>
-    <td>256</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>ST24C02</td>
-    <td>256</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>M24C04</td>
-    <td>512</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>ST24C04</td>
-    <td>512</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>M24C08</td>
-    <td>1024</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>ST24C08</td>
-    <td>1024</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>M24C16</td>
-    <td>2048</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
- 
-  <tr>
-    <td>M24C32</td>
-    <td>4096</td>
-    <td>32</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>M24C64</td>
-    <td>8192</td>
-    <td>32</td>
-    <td>2</td>
- </tr>
- 
-  <tr>
-    <td>M24128</td>
-    <td>16384</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>M24256</td>
-    <td>32768</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
-  <tr>
-    <td>M24512</td>
-    <td>65536</td>
-    <td>64</td>
-    <td>2</td>
- </tr>
- </table>
-<br>
-<table width="760" align="center" border="1" cellspacing="0" cellpadding="7" style="border-collapse: collapse">
- <tr>
-  <td valign="top" colspan="4">
-  Microchip
-  </td>
- </tr>
- 
-  <tr>
-    <td>Classname</td>
-    <td>Size</td>
-    <td>Page Size</td>
-    <td>Adressmode</td>
- </tr>
- 
-  <tr>
-    <td>MC24C01C</td>
-    <td>128</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
- 
-  <tr>
-    <td>MC24AA02E48</td>
-    <td>256</td>
-    <td>8</td>
-    <td>1</td>
- </tr>
-  <tr>
-    <td>MC24AA025E48</td>
-    <td>256</td>
-    <td>16</td>
-    <td>1</td>
- </tr>
- </table>
-
-
-<h2> Grund zur Erstellung</h2>
-<p>Für eine Menueführung wollten viele Strings verwaltet werden. Selbst das F() Macro war nur bedingt hilfreich, es wurde knapp mit dem Flash Speicher. Das im AVR eingebaute EEPROM hat am Anfang Linderung gebracht, aber mit zunehmender Größe des Projektes reichte es auch nicht mehr. Und sowieso sind die EEProms des AVR eher klein.</p>
-
-
-<p>Abhilfe versprach das sowieso schon auf der verwendeten RTC verbaute Atmel AT24C32 I2C EEProm. Bei der Suche nach brauchbaren Libs ist mir einiges Gutes unter gekommen. Aber auch viele gruselige Dinge. Was aber allen gemeinsam war, sie decken nur wenige Typen ab. Und jede Lib hat ihre eigenen Methoden, welche wenig Ähnlichkeiten mit den Methoden der original Arduino EEProm Lib haben.</p>
-
-<h2>Installation</h2>
-<p>Diese Library liegt als Zip Datei vor. Im Library Manager der Arduino IDE, die Zip Datei auswählen und installieren.
-<br>
-Hauptmenu -> Sketch -> Include Library -> Add .ZIP Library<br>
-</p>
-
-<h2>Abhängigkeiten</h2>
-<p> Diese Lib basiert auf Wire. In der setup() Funktion muss ein Wire.begin() gemacht werden. Die verwendeten EEProms müssen das "ACKNOWLEDGE POLLING" beherrschen. </p>
-
-</p>Hier die status.ino aus den examples/Beispielen der Library</p>
-<pre>
-<font color="#000000">#include</font> <font color="#434f54">&lt;</font><font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
-<font color="#000000">#include</font> <font color="#434f54">&lt;</font><font color="#000000">I2C_EEPROM</font><font color="#434f54">.</font><font color="#000000">h</font><font color="#434f54">&gt;</font>
+[ZIP of repo for Arduino IDE installation](https://github.com/Prehistoricman/I2C_EEPROM/archive/master.zip")
 
 
 
+## Features
 
-<font color="#000000">AT24C32</font><font color="#434f54">&lt;</font><font color="#434f54">&gt;</font> <font color="#000000">eep</font><font color="#000000">;</font> <font color="#434f54">// Das EEProm auf der china üblichen RTC, default Adresse 0x50 (80)</font>
-
-<font color="#00979c">void</font> <font color="#5e6d03">setup</font><font color="#000000">(</font><font color="#000000">)</font> 
-<font color="#000000">{</font>
- &nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">9600</font><font color="#000000">)</font><font color="#000000">;</font> 
- &nbsp;&nbsp;<font color="#d35400">Wire</font><font color="#434f54">.</font><font color="#d35400">begin</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">;</font>
- 
- &nbsp;&nbsp;<font color="#434f54">// die Speichergröße des EEProm wird in der Klasse gespeichert</font>
- &nbsp;&nbsp;<font color="#434f54">// kann also ausgelesen werden, ohne dass das EEProm wirlich</font>
- &nbsp;&nbsp;<font color="#434f54">// bereit ist </font>
- &nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">print</font><font color="#000000">(</font><font color="#00979c">"EE Prom lenth: "</font><font color="#000000">)</font><font color="#000000">;</font> 
- &nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#000000">eep</font><font color="#434f54">.</font><font color="#d35400">length</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">)</font><font color="#000000">;</font> 
-
- &nbsp;&nbsp;<font color="#5e6d03">if</font><font color="#000000">(</font><font color="#000000">eep</font><font color="#434f54">.</font><font color="#d35400">ready</font><font color="#000000">(</font><font color="#000000">)</font><font color="#000000">)</font> <font color="#434f54">// eeprom bereit ?</font>
- &nbsp;&nbsp;<font color="#000000">{</font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">// eeprom wurde gefunden, und ist bereit</font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font> <font color="#000000">(</font><font color="#00979c">"EEProm ist bereit!"</font><font color="#000000">)</font><font color="#000000">;</font>
- &nbsp;&nbsp;<font color="#000000">}</font><font color="#5e6d03">else</font>
- &nbsp;&nbsp;<font color="#000000">{</font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">// eeprom hat nicht geantwortet</font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<font color="#434f54">// Auch direkt nach dem schreiben blockiert das eeprom ein paar ms</font>
- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b><font color="#d35400">Serial</font></b><font color="#434f54">.</font><font color="#d35400">println</font><font color="#000000">(</font><font color="#00979c">"EEProm ist nicht bereit, Verkabelung prüfen "</font><font color="#000000">)</font><font color="#000000">;</font>
- &nbsp;&nbsp;<font color="#000000">}</font>
-<font color="#000000">}</font>
-
-<font color="#00979c">void</font> <font color="#5e6d03">loop</font><font color="#000000">(</font><font color="#000000">)</font> 
-<font color="#000000">{</font>
-
-<font color="#000000">}</font>
-</pre>
-
-<h2>Kompatibilität zu EEPROM</h2>
-
-<h3>void begin()</h3>
-<p>Eine Methode begin() gibt es nicht. Es besteht hier keine Notwendigkeit für eine solche Methode.</p>
-<br>
-<h3>uint16_t length()</h3>
-<p>Length gibt die größe des EEProms zurück.</p>
-<br>
-<h3>uint8_t read(unit16_t address)</h3>
-<p>Read liest 1 Byte von der angegebenen Adresse</p>
-<br>
-<h3>void write(unit16_t address,uint8_t value)</h3>
-<p>Write schreibt 1 Byte an die angegebenen Adresse</p>
-<br>
-<h3>void update(unit16_t address,uint8_t value)</h3>
-<p>Update nutzt intern read() und write(). Es wird nur geschrieben wenn sich die Daten unterscheiden.</p>
-<br>
-<h3>void put(unit16_t address,  customvar)</h3>
-<p>Put schreibt einen beliebigen Variableninhalt an gegebenen Adresse. Die notwendige Länge wird selbst berechnet. put() ruft intern update() auf.</p>
-<br>
-<h3>void get(unit16_t address,  customvar)</h3>
-<p>Get liest einen beliebigen Variableninhalt von der gegebenen Adresse. Die notwendige Länge wird selbst berechnet.</p>
-
-<h3>Array Access Interface</h3>
-<p>Nicht implementiert.</p>
+  * Mostly call compatible with the Arduino EEPROM Lib
+  * Support for many I2C EEPROMs
+  * Relatively easy creation of user-defined EEPROMs
+  * Low RAM consumption
 
 
+## Supported EEPROMs
+Support for other EEPROMs can be added.
 
-<h2>Eigene, zusätzliche Methoden</h2>
+### Atmel
 
-<h3>bool ready()</h3>
-<p>Ready liefert true, wenn der Baustein bereit ist.</p>
-<br>
-<h3>void fastBlockWrite(uint16_t address,void * start, uint16_t length)</h3>
-<p>fastBlockWrite schreibt einen beliebigen Datenblock an die angegebene EEProm Addresse. Das Paging wird intern abgehandelt.</p>
-<br>
-<h3>void fastBlockRead(uint16_t address,void * start, uint16_t length)</h3>
-<p>fastBlockRead liest einen beliebigen Datenblock von der angegebenen EEProm Addresse. Das Paging wird intern abgehandelt.</p>
-<br>
-<p>fastBlockRead() und fastBlockWrite() sind deutlich fixer (ca 6 mal), als put() und get(). Der Geschwindigkeitsvorteil wird erkauft durch den Verzicht auf das vorherige prüfen, ob sich die Daten unterscheiden. Desweiteren wird das Page schreiben/lesen der Bausteine unterstützt.  </p>
-
-<br>
-
-<h3>void onWaiting( void (*callback)())</h3>
-<p>Nach Schreibvorgängen braucht das EEProm etwas Zeit um den Vorgang abzuschließen. Hier kann eine Callback Funktion aufgerufen werden um diese Zeit zu nutzen. Es ist nicht ratsam, in der Callback Funktion, weitere EEProm Aufrufe zu tätigen. </p>
-
-
-<p></p>
-<p></p>
-<p></p>
-<p></p>
+Class name | Size (bytes) | Page size (bytes) | Addressing mode
+------------ | ------------- | ------------ | -------------
+AT24C01 | 128 | 8 | 1
+AT24C02 | 256 | 8 | 1
+AT24C04 | 512 | 16 | 1
+AT24C08 | 1024 | 16 | 1
+AT24C16 | 2048 | 16 | 1
+AT24C32 | 4096 | 32 | 2
+AT24C64 | 8192 | 64 | 2
+AT24C128 | 16384 | 64 | 2
+AT24C256 | 32768 | 64 | 2
+AT24C512 | 65536 | 128 | 2
 
 
+### STMicroelectronics
 
-  
- </body>
-</html>
+Class name | Size (bytes) | Page size (bytes) | Addressing mode
+------------ | ------------- | ------------ | -------------
+M24C01 | 128 | 16 | 1
+ST24C01 | 128 | 8 | 1
+M24C02 | 256 | 16 | 1
+ST24C02 | 256 | 8 | 1
+M24C04 | 512 | 16 | 1
+ST24C04 | 512 | 8 | 1
+M24C08 | 1024 | 16 | 1
+ST24C08 | 1024 | 16 | 1
+M24C16 | 2048 | 16 | 1
+M24C32 | 4096 | 32 | 2
+M24C64 | 8192 | 32 | 2
+M24128 | 16384 | 64 | 2
+M24256 | 32768 | 64 | 2
+M24512 | 65536 | 64 | 2
+
+
+### Microchip
+
+Class name | Size (bytes) | Page size (bytes) | Addressing mode
+------------ | ------------- | ------------ | -------------
+MC24C01C | 128 | 16 | 1
+MC24AA02E48 | 256 | 8 | 1
+MC24AA025E48 | 256 | 16 | 1
+
+
+## Purpose
+
+Many strings had to be managed for menu guidance. Even the F() macro was only of limited use as it was running out of flash memory. The EEPROM built into the AVR brought relief at the beginning, but with the size of the project it was no longer enough. And anyway, the AVR EEPROMs are rather small.
+
+The Atmel AT24C32 I2C EEPROM already installed on the RTC used promised a remedy. I have come up with some good things in the search for usable libs. But also a lot of creepy things. But what was common to all, they cover only a few types. And each library has its own methods, which have little in common with the methods of the original Arduino EEPROM library.
+
+## Installation
+
+This library is available as a zip file. In the Arduino IDE Library Manager, select and install the zip file.
+Main menu -> Sketch -> Include Library -> Add .ZIP Library
+
+## Dependencies
+
+This library depends on Wire.h. Wire.begin() must be called before using any library functions. EEPROMs must accept ACK polling.
+
+Here is the status.ino from the library's examples:
+```#include <Wire.h>
+#include <I2C_EEPROM.h>
+AT24C32 <> eep; // The EEPROM on the usual China RTC, default address 0x50 (80) 
+
+
+void setup () {
+    Serial.begin(9600);
+    Wire.begin();
+    
+    // The memory size of the EEPROM is saved in the class
+    // can therefore be read out without the EEPROM really
+    // ready
+    Serial.print ("EE Prom lenth:");
+    Serial.println (eep.length ());
+    
+    
+    if (eep.ready()) { // EEPROM ready?
+        // EEPROM has been found and is ready
+        Serial.println("EEPROM is ready!");
+    } else {
+        // EEPROM did not respond
+        // Even after writing, the EEPROM blocks a few ms
+        Serial.println("EEPROM is not ready, check wiring");
+    }
+}
+
+
+void loop () {
+    
+}
+```
+
+## Usage
+
+### void begin()
+There is no begin method.
+
+### uint16_t length()
+Returns the size of the EEPROM. This value is stored in the class, so no connection to the EEPROM is necessary.
+
+### uint8_t read(unit16_t address)
+Reads 1 byte from the specified address.
+
+### void write(unit16_t address,uint8_t value)
+Writes 1 byte to the specified address.
+
+### void update(unit16_t address,uint8_t value)
+Reads from the specified address, and writes to it if that value differs from the specified value.
+
+### void put(unit16_t address,  customvar)
+Writes any variable content to the specified address. This method internally uses the update() method.
+
+### void get(unit16_t address,  customvar)
+Reads into any variable from the specified address.
+
+### bool ready()
+Returns true if the block is ready.
+
+### void fastBlockWrite(uint16_t address, void \*start, uint16_t length)
+Writes any data block to the specified address. Paging is handled internally. Significantly faster than using put().
+
+### void fastBlockRead(uint16_t address, void \*start, uint16_t length)
+Reads a block of data from the specified address. Paging is handled internally. Significantly faster than using get().
+
+### void onWaiting(void (\*callback)())
+After writing, the EEPROM may need time to complete the process. A callback function can be called to use this time. It is not advisable to make further EEPROM calls in the callback.
