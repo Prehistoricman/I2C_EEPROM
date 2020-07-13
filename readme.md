@@ -7,7 +7,7 @@ Can be used with the Arduino IDE. This library is based on Wire.
 
 ## Download
 
-[ZIP of repo for Arduino IDE installation](https://github.com/Prehistoricman/I2C_EEPROM/archive/master.zip")
+[ZIP of repo for Arduino IDE installation](https://github.com/Prehistoricman/I2C_EEPROM/archive/master.zip)
 
 
 
